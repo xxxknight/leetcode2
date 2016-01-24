@@ -7,7 +7,7 @@ public class _287_FindtheDuplicateNumber {
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
 			int count = 0;
-			for (int num : nums) {
+			for (int num : nums) {	//寻找数组中比mid小的数的个数，以确定重复数字的范围在mid的哪一边
 				if (num <= mid) {
 					count++;
 				}
