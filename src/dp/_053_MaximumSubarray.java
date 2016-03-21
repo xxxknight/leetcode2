@@ -1,7 +1,6 @@
 package dp;
 
 /**
- * 求数组中连续数字的最大和
  * @author founder
  * 
  */

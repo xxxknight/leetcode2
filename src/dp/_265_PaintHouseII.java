@@ -23,30 +23,41 @@ package dp;
  */
 
 public class _265_PaintHouseII {
-	
+
 	public int minCostII(int[][] costs) {
-		if (costs== null || costs.length == 0 ) {
+		if (costs == null || costs.length <= 0) {
 			return 0;
 		}
-		int k = costs[0].length;
-		int[] last = new int[k];
-		int[] cur = new int[k];
-		for (int i = 0; i < k; i++) {
-			last[i] = costs[0][i];
+		int m = costs.length;
+		int n = costs[0].length;
+		int[][] dp = new int[m][n];
+
+		for (int i = 0; i < n; i++) {
+			dp[0][i] = costs[0][i];
 		}
-		for (int j = 0; j < cur.length; j++) {
-			int min = Integer.MAX_VALUE;
-			for (int i = 0; i < k; i++) {
-				cur[i] = Math.min(a, b)
+
+		for (int i = 1; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				dp[i][j] = getMin(dp[i - 1], j) + costs[i][j];
 			}
-			
 		}
-		
+
+		int min = Integer.MAX_VALUE;
+		for (int i = 0; i < n; i++) {
+			min = Math.min(min, dp[m - 1][i]);
+		}
+		return min;
 
 	}
 
-	public static void main(String[] args) {
-
+	public int getMin(int[] arr, int j) {
+		int min = Integer.MAX_VALUE;
+		for (int i = 0; i < arr.length; i++) {
+			if (i != j) {
+				min = Math.min(min, arr[i]);
+			}
+		}
+		return min;
 	}
 
 }
